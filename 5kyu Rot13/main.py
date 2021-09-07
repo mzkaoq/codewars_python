@@ -1,18 +1,18 @@
 import string
 
+
 def rot13(message):
     new_string = ''
     for i in message:
         if i in string.ascii_lowercase or string.ascii_uppercase:
-            #print(chr((ord(i)+13)%123))
-            print(ord(i))
-            k = (ord(i)+13)%123
-            print(k)
-            if k < 65:
-                k+= 65
-            print(k)
+            if ord(i) >= 97:
+                k = ((ord(i) + 13 - 97) % 26 + 97)
+            else:
+                k = ((ord(i) + 13 - 65) % 26 + 65)
             new_string += chr(k)
-        print('---')
+        else:
+            new_string += i
     return new_string
+
 
 print(rot13("Test"))
